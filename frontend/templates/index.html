@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Real-Time Handwritten Digit Recognition</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Real-Time Handwritten Digit Recognition</h1>
+        <p class="subtitle">Draw a digit from 0 to 9 and click Predict</p>
+
+        <div class="main-grid">
+            <div class="card">
+                <h2>Draw Digit</h2>
+                <canvas id="drawCanvas" width="280" height="280"></canvas>
+
+                <div class="button-group">
+                    <button id="clearBtn">Clear</button>
+                    <button id="predictBtn">Predict</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Prediction Result</h2>
+                <p><strong>Predicted Digit:</strong> <span id="predictedDigit">-</span></p>
+                <p><strong>Confidence:</strong> <span id="confidenceScore">-</span></p>
+
+                <h3>Top-3 Predictions</h3>
+                <ul id="topPredictions"></ul>
+
+                
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Analytics Dashboard</h2>
+            <div class="metrics">
+                <div class="metric-box">
+                    <h3>Model Accuracy</h3>
+                    <p id="modelAccuracy">-</p>
+                </div>
+                <div class="metric-box">
+                    <h3>Model Loss</h3>
+                    <p id="modelLoss">-</p>
+                </div>
+            </div>
+
+            <div class="chart-grid">
+                <div>
+                    <h3>Class-wise Accuracy</h3>
+                    <canvas id="classAccuracyChart"></canvas>
+                </div>
+                <div>
+                    <h3>Training Accuracy</h3>
+                    <canvas id="trainingChart"></canvas>
+                </div>
+            </div>
+
+            <div>
+                <h3>Confusion Matrix</h3>
+                <div id="confusionMatrixTable"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
